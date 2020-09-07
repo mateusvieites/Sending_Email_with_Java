@@ -47,7 +47,7 @@ public class MainEmail{
 
       Address[] toUser = InternetAddress.parse(AllTexts.getTo());
       message.setRecipients(Message.RecipientType.TO, toUser);
-      message.setSubject(AllTexts.getSubject());//Assunto
+      message.setSubject(AllTexts.getSubject());
 
       MimeBodyPart mbp1 = new MimeBodyPart();
       mbp1.setText("Enviando arquivo");
