@@ -1,5 +1,7 @@
 package texts;
 
+import java.io.IOException;
+
 public class AllTexts {
 	
 	private static AllTexts uniqueInstance;
@@ -14,6 +16,12 @@ public class AllTexts {
 	private AllTexts() {
 	}
 
+	public static boolean checkError(String string) {
+		if(string == null || string.equals("")) {
+			return false;
+		}
+		return true;
+	}
 	public static void setUniqueInstance(AllTexts uniqueInstance) {
 		AllTexts.uniqueInstance = uniqueInstance;
 	}
