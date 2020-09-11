@@ -18,7 +18,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextArea;
 
@@ -41,11 +44,17 @@ public class MessageWindow extends JFrame {
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem settings_menuitem = new JMenuItem("Setting");
+		settings_menuitem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				new SettingsWindow(false).setVisible(true);
+			}
+		});
 		mnNewMenu.add(settings_menuitem);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
 		
 		JLabel subject_label = new JLabel("Subject:");
 		subject_label.setBounds(10, 36, 46, 14);
@@ -69,6 +78,17 @@ public class MessageWindow extends JFrame {
 		JButton sfile_button = new JButton("Search File:");
 		sfile_button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				JFileChooser fileChooser = new JFileChooser();
+				fileChooser.setDialogTitle("texto");
+				fileChooser.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+				int returnD = fileChooser.showOpenDialog(null);
+				if(returnD == JFileChooser.APPROVE_OPTION) {
+					File file = fileChooser.getSelectedFile();
+					file_txf.setText(file.getPath());
+				}else {
+					file_txf.setText("cu");
+				}
+			
 			}
 		});
 		sfile_button.setBounds(66, 138, 89, 20);

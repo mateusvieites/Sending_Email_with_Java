@@ -31,6 +31,7 @@ public class SettingsWindow extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		setResizable(false);
 		
 		JLabel email_label = new JLabel("Email:");
 		email_label.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -66,11 +67,10 @@ public class SettingsWindow extends JFrame {
 						new MessageWindow().setVisible(true);
 						dispose();
 					}else {
-						new MessageWindow().setVisible(true);
 						dispose();
 					}
 				}else {
-					
+					// #TODO ERROR MESSAGE
 				}
 			}
 		});
